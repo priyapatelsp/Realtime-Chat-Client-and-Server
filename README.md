@@ -5,6 +5,7 @@ This challenge is to Build Your Own Realtime Chat Client and Server .
 This tool is build as part of <a href="https://codingchallenges.fyi/challenges/challenge-realtime-chat">coding challenges</a> .
 
 
+
 ```
 The server will be able to support multiple client connections.
 Every time a client sends a message to the server,
@@ -45,7 +46,10 @@ Connected to server at 127.0.0.1:7007
 You: Welcome to the chatroom! Please enter your name:
 Hi I'm Client 1.  has joined the chat!
 ```
-
+<br>
+Output :
+<br>
+<img width="800" alt="Screenshot 2024-11-11 at 1 35 49 PM" src="https://github.com/user-attachments/assets/27df2fc5-0a5a-4c2a-a727-e41d87971157">
 
 <h2>Helpful resources </h2>
 
