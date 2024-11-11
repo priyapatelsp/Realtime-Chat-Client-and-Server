@@ -1,9 +1,12 @@
 package org.example;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
-public class Client {
+public class Client_2 {
     private static String userName;
     private static Socket socket;
     private static BufferedReader serverInput;
@@ -15,7 +18,6 @@ public class Client {
             BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
             System.out.print("Enter your name: ");
             userName = consoleReader.readLine();
-
             String serverAddress = "127.0.0.1";
             int port = 7007;
             socket = new Socket(serverAddress, port);
@@ -27,6 +29,7 @@ public class Client {
 
             Thread receiveThread = new Thread(new ReceiveMessages());
             receiveThread.start();
+
             String message;
             while (true) {
                 System.out.print("You: ");
@@ -35,8 +38,7 @@ public class Client {
                     break;
                 }
 
-                serverOutput.println(userName + ": " + message);
-                System.out.println(userName + ": " + message); // Echo locally
+                serverOutput.println(message);
             }
 
             serverInput.close();
@@ -50,14 +52,13 @@ public class Client {
         }
     }
 
-
     private static class ReceiveMessages implements Runnable {
         @Override
         public void run() {
             try {
                 String serverMessage;
                 while ((serverMessage = serverInput.readLine()) != null) {
-                    System.out.println(serverMessage);  // Print the message from the server
+                    System.out.println(serverMessage);
                 }
             } catch (IOException e) {
                 System.err.println("Error reading from server: " + e.getMessage());
